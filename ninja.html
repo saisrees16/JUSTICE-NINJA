@@ -536,6 +536,10 @@
     <audio id="bomb-sound" preload="auto">
         <source src="bomb.mp4" type="audio/mp4">
     </audio>
+    <audio id="background-music" loop preload="auto">
+        <source src="ninja music.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 
 
     <script>
@@ -551,6 +555,7 @@
         const modalMessage = modalOverlay.querySelector('.modal-message');
         const modalDetails = modalOverlay.querySelector('.modal-details');
         const modalClose = modalOverlay.querySelector('.modal-close');
+        const backgroundMusic = document.getElementById('background-music');
 
         // Initialize game state variables (score, current sum, etc.)
         let score = 0;
@@ -678,7 +683,7 @@
             // Function to start the game when the start button is clicked
             function startGame() {
                 instructionsOverlay.style.display = 'none';
-
+                backgroundMusic.play();
                 if (isFirstStart) {
                     updateFruitInfoList();
                     startNewQuestion();
@@ -1115,7 +1120,8 @@
             // Mute or unmute the sounds based on the current state
             sliceSound.muted = isMuted;
             bombSound.muted = isMuted;
-
+            backgroundMusic.muted = isMuted;
+            
             soundToggleBtn.innerHTML = isMuted ? '🔇 Sound Off' : '🔊 Sound On';
         });
     </script>
